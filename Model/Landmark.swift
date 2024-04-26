@@ -10,7 +10,7 @@ import SwiftUI
 import MapKit
 
 struct Landmark: Hashable, Codable, Identifiable {
-
+    
     var id: Int
     var name: String
     var park: String
@@ -25,10 +25,14 @@ struct Landmark: Hashable, Codable, Identifiable {
         case rivers = "Rivers"
         case mountains = "Mountains"
     }
-
+    
     private var imageName: String // make this private because people using the struct Landmark care only about the image itself
     var image: Image {
         Image(imageName)
+    }
+
+    var featureImage: Image? {
+        isFeatured ? Image(imageName + "_feature") : nil
     }
 
     private var coordinates: Coordinates
